@@ -54,6 +54,7 @@ namespace JiraStatistics.UnitTests
             {
                 Id = id,
                 Name = name,
+                Released = true,
                 ReleaseDate = releaseDate
             };
         }
