@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+        <PublishSingleFile>true</PublishSingleFile>
+        <PublishTrimmed>true</PublishTrimmed>
+        <PublishReadyToRun>true</PublishReadyToRun>
+        <ApplicationIcon>Assets\jira.ico</ApplicationIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Update="**\*.xaml.cs">
+            <DependentUpon>%(Filename)</DependentUpon>
+        </Compile>
+        <AvaloniaResource Include="**\*.xaml">
+            <SubType>Designer</SubType>
+        </AvaloniaResource>
+        <AvaloniaResource Include="Assets\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="0.9.9" />
+        <PackageReference Include="Avalonia.Desktop" Version="0.9.9" />
+        <PackageReference Include="Avalonia.ReactiveUI" Version="0.9.9" />
+        <PackageReference Include="Nager.Date" Version="1.25.10" />
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\JiraStatistics\JiraStatistics.csproj" />
+    </ItemGroup>
+</Project>

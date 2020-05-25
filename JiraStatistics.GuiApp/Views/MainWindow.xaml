@@ -1,0 +1,74 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="JiraStatistics.GuiApp.Views.MainWindow"
+        Icon="/Assets/jira.ico"
+        Title="{Binding Title, Mode=OneWay}"
+        MinWidth="800"
+        MinHeight="600">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="15" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="15" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="15" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBox
+            Grid.Row="0"
+            Text="{Binding JqlQuery, Mode=TwoWay}"
+            Watermark="Enter a JQL issue query"
+            TextWrapping="Wrap"
+            AcceptsReturn="True"
+            IsEnabled="{Binding !IsExporting, Mode=OneWay}" />
+        
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="15" />
+                <ColumnDefinition Width="150" />
+            </Grid.ColumnDefinitions>
+
+            <TextBox
+                Grid.Column="0"
+                Text="{Binding OutputDirectoryPath, Mode=TwoWay}"
+                Watermark="Output directory"
+                IsEnabled="{Binding !IsExporting, Mode=OneWay}" />
+
+            <Button Grid.Column="3" Content="Select directory" Command="{Binding SelectDirectoryCommand, Mode=OneTime}" />
+        </Grid>
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="15" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="15" />
+                <ColumnDefinition Width="185" />
+                <ColumnDefinition Width="15" />
+                <ColumnDefinition Width="150" />
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0" Text="{Binding JiraUsername, Mode=TwoWay}" Watermark="Jira email address" IsEnabled="{Binding !IsExporting, Mode=OneWay}" />
+
+            <TextBox Grid.Column="2" Text="{Binding JiraAccessToken, Mode=TwoWay}" Watermark="Jira access token" IsEnabled="{Binding !IsExporting, Mode=OneWay}" PasswordChar="*" />
+
+            <TextBox Grid.Column="4" Text="{Binding JiraProjectKey, Mode=TwoWay}" Watermark="Jira project key for fix versions" IsEnabled="{Binding !IsExporting, Mode=OneWay}" />
+
+            <Button Grid.Column="6" Content="Export" Command="{Binding ExportCommand, Mode=OneTime}" IsVisible="{Binding !IsExporting, Mode=OneWay}" />
+
+            <Button Grid.Column="6" Content="Cancel" Command="{Binding CancelCommand, Mode=OneTime}" IsVisible="{Binding IsExporting, Mode=OneWay}" />
+        </Grid>
+
+        <TextBox
+            Grid.Row="6"
+            Watermark="Logs"
+            Text="{Binding Logs, Mode=OneWay}"
+            IsReadOnly="True"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            x:Name="LogsTextBox" />
+    </Grid>
+</Window>
