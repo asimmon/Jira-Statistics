@@ -13,13 +13,22 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
+
     - name: Test
       run: dotnet test --verbosity normal
       working-directory: ./JiraStatistics.UnitTests
-    - name: Build
+
+    - name: Publish
       run: dotnet publish --configuration Release
       working-directory: ./JiraStatistics.GuiApp
+
+    - name: Upload built artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: JiraStatistics.GuiApp.exe
+        path: ./JiraStatistics.GuiApp/bin/Release/netcoreapp3.1/win-x64/publish/JiraStatistics.GuiApp.exe
