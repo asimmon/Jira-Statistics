@@ -116,8 +116,8 @@ namespace JiraStatistics
                     var complexity = string.IsNullOrWhiteSpace(i.Complexity) && i.Parent != null ? i.Parent.Complexity : i.Complexity;
                     w.WriteCell(w.Row, w.Col, complexity);
                 }),
-                new SingleCellJiraIssueWriter("CycleTime", (w, i) => w.WriteCell(w.Row, w.Col, i.CycleTime)),
-                new SingleCellJiraIssueWriter("LeadTime", (w, i) => w.WriteCell(w.Row, w.Col, i.LeadTime)),
+                new SingleCellJiraIssueWriter("DaysCycleTime", (w, i) => w.WriteCell(w.Row, w.Col, i.CycleTime)),
+                new SingleCellJiraIssueWriter("DaysLeadTime", (w, i) => w.WriteCell(w.Row, w.Col, i.LeadTime)),
                 new SingleCellJiraIssueWriter("DaysEstimated", (w, i) => w.WriteCell(w.Row, w.Col, i.DaysEstimated)),
                 new ColumnWriter<JiraIssue>(
                     () => RelevantCategories.Length, () => 1, i => RelevantCategories.Length, i => 1,
@@ -134,7 +134,7 @@ namespace JiraStatistics
                         for (var j = 0; j < RelevantCategories.Length; j++)
                         {
                             var duration = i.Statistics.CategoryDurations.TryGetValue(RelevantCategories[j], out var tmpDuration) ? tmpDuration : TimeSpan.Zero;
-                            w.WriteCell(w.Row, w.Col + j, w.Row, w.Col + j, duration.TotalHours);
+                            w.WriteCell(w.Row, w.Col + j, w.Row, w.Col + j, duration.TotalDays);
                         }
                     }),
                 new SingleCellJiraIssueWriter("Title", (w, i) => w.WriteCell(w.Row, w.Col, i.Title))
@@ -156,10 +156,10 @@ namespace JiraStatistics
 
         private static string GetCategoryDisplayName(JiraStatusCategory category) => category switch
         {
-            JiraStatusCategory.New => "HoursAtNew",
-            JiraStatusCategory.InProgress => "HoursInProgress",
-            JiraStatusCategory.Done => "HoursSinceDone",
-            JiraStatusCategory.OnHold => "HoursOnHold",
+            JiraStatusCategory.New => "DaysAtNew",
+            JiraStatusCategory.InProgress => "DaysInProgress",
+            JiraStatusCategory.Done => "DaysSinceDone",
+            JiraStatusCategory.OnHold => "DaysOnHold",
             _ => throw new NotSupportedException($"Category {category} is not supported")
         };
 

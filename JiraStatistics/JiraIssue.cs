@@ -52,9 +52,9 @@ namespace JiraStatistics
 
         public Nullable<double> DaysEstimated { get; set; }
 
-        public Nullable<int> CycleTime { get; set; }
+        public Nullable<double> CycleTime { get; set; }
 
-        public Nullable<int> LeadTime { get; set; }
+        public Nullable<double> LeadTime { get; set; }
 
         public JiraIssueType IssueType { get; set; }
 
