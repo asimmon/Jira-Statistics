@@ -116,8 +116,8 @@ namespace JiraStatistics
                     var complexity = string.IsNullOrWhiteSpace(i.Complexity) && i.Parent != null ? i.Parent.Complexity : i.Complexity;
                     w.WriteCell(w.Row, w.Col, complexity);
                 }),
-                new SingleCellJiraIssueWriter("DaysCycleTime", (w, i) => w.WriteCell(w.Row, w.Col, i.CycleTime)),
-                new SingleCellJiraIssueWriter("DaysLeadTime", (w, i) => w.WriteCell(w.Row, w.Col, i.LeadTime)),
+                new SingleCellJiraIssueWriter("CycleTime", (w, i) => w.WriteCell(w.Row, w.Col, i.CycleTime)),
+                new SingleCellJiraIssueWriter("LeadTime", (w, i) => w.WriteCell(w.Row, w.Col, i.LeadTime)),
                 new SingleCellJiraIssueWriter("DaysEstimated", (w, i) => w.WriteCell(w.Row, w.Col, i.DaysEstimated)),
                 new ColumnWriter<JiraIssue>(
                     () => RelevantCategories.Length, () => 1, i => RelevantCategories.Length, i => 1,
