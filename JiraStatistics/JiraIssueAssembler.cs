@@ -60,10 +60,10 @@ namespace JiraStatistics
             this._issue.Complexity = string.IsNullOrWhiteSpace(this._jsonIssue.Fields.Complexity?.Value) ? string.Empty : this._jsonIssue.Fields.Complexity.Value;
 
             // sprints
-            var jsonSprints = this._jsonIssue.Fields.Sprint ?? Enumerable.Empty<string>();
+            var jsonSprints = this._jsonIssue.Fields.Sprint ?? Enumerable.Empty<JsonJiraSprint>();
             foreach (var jsonSprint in jsonSprints)
             {
-                var sprintMatch = SprintRegex.Match(jsonSprint);
+                var sprintMatch = SprintRegex.Match(jsonSprint.Name);
                 if (sprintMatch.Success)
                 {
                     var keys = sprintMatch.Groups["key"].Captures.Select(c => c.Value);

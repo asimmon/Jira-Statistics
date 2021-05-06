@@ -119,7 +119,7 @@ namespace JiraStatistics.UnitTests
                         Release1
                     },
                     Components = new List<JsonJiraComponent>(),
-                    Sprint = new string[0],
+                    Sprint = new JsonJiraSprint[0],
                     IssueType = new JsonJiraIssueType
                     {
                         Id = "1",

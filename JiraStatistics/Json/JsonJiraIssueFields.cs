@@ -43,7 +43,7 @@ namespace JiraStatistics.Json
         public string EpicLink { get; set; }
 
         [JsonProperty("customfield_10006")]
-        public string[] Sprint { get; set; }
+        public JsonJiraSprint[] Sprint { get; set; }
 
         [JsonProperty("customfield_12826")]
         public JsonJiraFieldValue Magnitude { get; set; }
@@ -53,6 +53,16 @@ namespace JiraStatistics.Json
 
         [JsonProperty("customfield_12827")]
         public JsonJiraFieldValue Complexity { get; set; }
+    }
+
+    [JsonObject(MemberSerialization.OptIn)]
+    public class JsonJiraSprint
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 
     [JsonObject(MemberSerialization.OptIn)]
