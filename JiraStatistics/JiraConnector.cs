@@ -17,7 +17,7 @@ namespace JiraStatistics
         private static readonly HttpClient Client = new HttpClient();
 
         private static readonly Regex FixVersionNameRegex = new Regex(
-            @"^(\d+\.)(\d+\.)?(\d+\.)?(\*|\d+)$",
+            @"^((\d+\.)(\d+\.)?(\d+\.)?(\*|\d+)|MASTER|DEVELOP)$",
             RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.CultureInvariant);
 
         private static readonly HashSet<string> SearchIssueFields = new HashSet<string>
