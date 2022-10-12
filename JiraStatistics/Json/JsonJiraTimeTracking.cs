@@ -1,9 +1,9 @@
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace JiraStatistics.Json;
 
 public class JsonJiraTimeTracking
 {
-    [JsonPropertyName("originalEstimateSeconds")]
+    [JsonProperty("originalEstimateSeconds")]
     public int? OriginalEstimateSeconds { get; set; }
 }

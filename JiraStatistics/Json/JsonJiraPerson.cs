@@ -1,9 +1,9 @@
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace JiraStatistics.Json;
 
 public class JsonJiraPerson
 {
-    [JsonPropertyName("emailAddress")]
+    [JsonProperty("emailAddress")]
     public string EmailAddress { get; set; }
 }

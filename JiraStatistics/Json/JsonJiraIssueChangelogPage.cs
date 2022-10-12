@@ -1,9 +1,9 @@
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace JiraStatistics.Json;
 
 public class JsonJiraIssueChangelogPage : JsonPage<JsonJiraIssueChangelogEvent>
 {
-    [JsonPropertyName("values")]
+    [JsonProperty("values")]
     public override List<JsonJiraIssueChangelogEvent> Values { get; set; }
 }

@@ -1,15 +1,15 @@
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace JiraStatistics.Json;
 
 public class JsonJiraIssueChangelogEvent
 {
-    [JsonPropertyName("author")]
+    [JsonProperty("author")]
     public JsonJiraPerson Author { get; set; }
 
-    [JsonPropertyName("created")]
+    [JsonProperty("created")]
     public string Created { get; set; }
 
-    [JsonPropertyName("items")]
+    [JsonProperty("items")]
     public List<JsonJiraIssueChangelogEventItem> Items { get; set; }
 }

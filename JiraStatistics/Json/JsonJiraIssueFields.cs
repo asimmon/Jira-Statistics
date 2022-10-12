@@ -1,99 +1,99 @@
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace JiraStatistics.Json;
 
 public class JsonJiraIssueFields
 {
-    [JsonPropertyName("parent")]
+    [JsonProperty("parent")]
     public JsonBaseJiraIssue Parent { get; set; }
 
-    [JsonPropertyName("summary")]
+    [JsonProperty("summary")]
     public string Summary { get; set; }
 
-    [JsonPropertyName("created")]
+    [JsonProperty("created")]
     public string Created { get; set; }
 
-    [JsonPropertyName("resolutiondate")]
+    [JsonProperty("resolutiondate")]
     public string ResolutionDate { get; set; }
 
-    [JsonPropertyName("creator")]
+    [JsonProperty("creator")]
     public JsonJiraPerson Creator { get; set; }
 
-    [JsonPropertyName("status")]
+    [JsonProperty("status")]
     public JsonJiraStatus Status { get; set; }
 
-    [JsonPropertyName("issuetype")]
+    [JsonProperty("issuetype")]
     public JsonJiraIssueType IssueType { get; set; }
 
-    [JsonPropertyName("priority")]
+    [JsonProperty("priority")]
     public JsonJiraPriority Priority { get; set; }
 
-    [JsonPropertyName("fixVersions")]
+    [JsonProperty("fixVersions")]
     public List<JsonJiraFixVersion> FixVersions { get; set; }
 
-    [JsonPropertyName("components")]
+    [JsonProperty("components")]
     public List<JsonJiraComponent> Components { get; set; }
 
-    [JsonPropertyName("timetracking")]
+    [JsonProperty("timetracking")]
     public JsonJiraTimeTracking TimeTracking { get; set; }
 
-    [JsonPropertyName("customfield_10007")]
+    [JsonProperty("customfield_10007")]
     public string EpicLink { get; set; }
 
-    [JsonPropertyName("customfield_10006")]
+    [JsonProperty("customfield_10006")]
     public JsonJiraSprint[] Sprint { get; set; }
 
-    [JsonPropertyName("customfield_12826")]
+    [JsonProperty("customfield_12826")]
     public JsonJiraFieldValue Magnitude { get; set; }
 
-    [JsonPropertyName("customfield_12825")]
+    [JsonProperty("customfield_12825")]
     public JsonJiraFieldValue Severity { get; set; }
 
-    [JsonPropertyName("customfield_12827")]
+    [JsonProperty("customfield_12827")]
     public JsonJiraFieldValue Complexity { get; set; }
 }
 
 public class JsonJiraSprint
 {
-    [JsonPropertyName("id")]
+    [JsonProperty("id")]
     public string Id { get; set; }
 
-    [JsonPropertyName("name")]
+    [JsonProperty("name")]
     public string Name { get; set; }
 }
 
 public class JsonJiraComponent
 {
-    [JsonPropertyName("id")]
+    [JsonProperty("id")]
     public string Id { get; set; }
 
-    [JsonPropertyName("name")]
+    [JsonProperty("name")]
     public string Name { get; set; }
 }
 
 public class JsonJiraIssueType
 {
-    [JsonPropertyName("id")]
+    [JsonProperty("id")]
     public string Id { get; set; }
 
-    [JsonPropertyName("name")]
+    [JsonProperty("name")]
     public string Name { get; set; }
 }
 
 public class JsonJiraPriority
 {
-    [JsonPropertyName("id")]
+    [JsonProperty("id")]
     public string Id { get; set; }
 
-    [JsonPropertyName("name")]
+    [JsonProperty("name")]
     public string Name { get; set; }
 }
 
 public class JsonJiraFieldValue
 {
-    [JsonPropertyName("id")]
+    [JsonProperty("id")]
     public string Id { get; set; }
 
-    [JsonPropertyName("value")]
+    [JsonProperty("value")]
     public string Value { get; set; }
 }

@@ -1,8 +1,8 @@
 using System.Net.Http.Headers;
 using System.Text;
-using System.Text.Json;
 using System.Text.RegularExpressions;
 using JiraStatistics.Json;
+using Newtonsoft.Json;
 
 namespace JiraStatistics;
 
@@ -59,7 +59,7 @@ public static class JiraConnector
     public static async Task<List<JsonJiraFixVersion>> GetVersionsAsync(JiraOptions opts)
     {
         var jsonStr = await GetStringAsync($"/rest/api/2/project/{opts.JiraProjectKey}/versions", opts);
-        var jsonVersions = JsonSerializer.Deserialize<List<JsonJiraFixVersion>>(jsonStr)
+        var jsonVersions = JsonConvert.DeserializeObject<List<JsonJiraFixVersion>>(jsonStr)
             ?? throw new InvalidOperationException("Could not deserialize versions JSON");
         var numericJsonVersions = jsonVersions.Where(IsNumericFixVersion).ToList();
 
@@ -85,7 +85,7 @@ public static class JiraConnector
         do
         {
             var jsonStr = await GetStringAsync(string.Format(urlFormat, startAt), opts);
-            jsonIssuePage = JsonSerializer.Deserialize<JsonJiraIssuePage>(jsonStr)
+            jsonIssuePage = JsonConvert.DeserializeObject<JsonJiraIssuePage>(jsonStr)
                 ?? throw new InvalidOperationException("Could not deserialize issues JSON");
             startAt += jsonIssuePage.MaxResults;
             totalFetched += jsonIssuePage.Values.Count;
@@ -118,7 +118,7 @@ public static class JiraConnector
         do
         {
             var jsonStr = await GetStringAsync(string.Format(urlFormat, startAt), opts);
-            changelogPage = JsonSerializer.Deserialize<JsonJiraIssueChangelogPage>(jsonStr)
+            changelogPage = JsonConvert.DeserializeObject<JsonJiraIssueChangelogPage>(jsonStr)
                 ?? throw new InvalidOperationException("Could not deserialize changelog JSON");
             events.AddRange(changelogPage.Values);
             startAt += changelogPage.MaxResults;
@@ -141,7 +141,7 @@ public static class JiraConnector
     public static async Task<List<JsonJiraStatus>> GetStatusesAsync(JiraOptions opts)
     {
         var jsonStr = await GetStringAsync("/rest/api/2/status", opts);
-        var jsonVersions = JsonSerializer.Deserialize<List<JsonJiraStatus>>(jsonStr)
+        var jsonVersions = JsonConvert.DeserializeObject<List<JsonJiraStatus>>(jsonStr)
             ?? throw new InvalidOperationException("Could not deserialize statuses JSON");
 
         opts.Logger($"Fetched {jsonVersions.Count} statuses");

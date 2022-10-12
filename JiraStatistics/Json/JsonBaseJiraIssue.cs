@@ -1,14 +1,14 @@
 using System.Diagnostics;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace JiraStatistics.Json;
 
 [DebuggerDisplay("{Id} - {Key}")]
 public class JsonBaseJiraIssue
 {
-    [JsonPropertyName("id")]
+    [JsonProperty("id")]
     public string Id { get; set; }
 
-    [JsonPropertyName("key")]
+    [JsonProperty("key")]
     public string Key { get; set; }
 }

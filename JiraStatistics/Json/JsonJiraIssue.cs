@@ -1,12 +1,12 @@
 using System.Diagnostics;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace JiraStatistics.Json;
 
 [DebuggerDisplay("{Id} - {Key} - {Fields.FixVersions.Count}")]
 public class JsonJiraIssue : JsonBaseJiraIssue
 {
-    [JsonPropertyName("fields")]
+    [JsonProperty("fields")]
     public JsonJiraIssueFields Fields { get; set; }
 
     [JsonIgnore]

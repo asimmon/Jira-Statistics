@@ -1,20 +1,20 @@
 using System.Diagnostics;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace JiraStatistics.Json;
 
 [DebuggerDisplay("{Id} - {Name} - {ReleaseDate}")]
 public class JsonJiraFixVersion
 {
-    [JsonPropertyName("id")]
+    [JsonProperty("id")]
     public string Id { get; set; }
 
-    [JsonPropertyName("name")]
+    [JsonProperty("name")]
     public string Name { get; set; }
 
-    [JsonPropertyName("releaseDate")]
+    [JsonProperty("releaseDate")]
     public string ReleaseDate { get; set; }
 
-    [JsonPropertyName("released")]
+    [JsonProperty("released")]
     public bool Released { get; set; }
 }
