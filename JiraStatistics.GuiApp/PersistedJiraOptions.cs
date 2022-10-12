@@ -7,6 +7,7 @@ public class PersistedJiraOptions
 {
     [JsonProperty("jqlQuery")]
     public string JqlQuery { get; set; }
+
     [JsonProperty("jiraUsername")]
     public string JiraUsername { get; set; }
 
