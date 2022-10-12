@@ -1,11 +1,9 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace JiraStatistics.Json
+namespace JiraStatistics.Json;
+
+public class JsonJiraPerson
 {
-    [JsonObject(MemberSerialization.OptIn)]
-    public class JsonJiraPerson
-    {
-        [JsonProperty("emailAddress")]
-        public string EmailAddress { get; set; }
-    }
+    [JsonPropertyName("emailAddress")]
+    public string EmailAddress { get; set; }
 }

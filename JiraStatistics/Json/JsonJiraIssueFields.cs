@@ -1,107 +1,99 @@
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace JiraStatistics.Json
+namespace JiraStatistics.Json;
+
+public class JsonJiraIssueFields
 {
-    [JsonObject(MemberSerialization.OptIn)]
-    public class JsonJiraIssueFields
-    {
-        [JsonProperty("parent")]
-        public JsonBaseJiraIssue Parent { get; set; }
+    [JsonPropertyName("parent")]
+    public JsonBaseJiraIssue Parent { get; set; }
 
-        [JsonProperty("summary")]
-        public string Summary { get; set; }
+    [JsonPropertyName("summary")]
+    public string Summary { get; set; }
 
-        [JsonProperty("created")]
-        public string Created { get; set; }
+    [JsonPropertyName("created")]
+    public string Created { get; set; }
 
-        [JsonProperty("resolutiondate")]
-        public string ResolutionDate { get; set; }
+    [JsonPropertyName("resolutiondate")]
+    public string ResolutionDate { get; set; }
 
-        [JsonProperty("creator")]
-        public JsonJiraPerson Creator { get; set; }
+    [JsonPropertyName("creator")]
+    public JsonJiraPerson Creator { get; set; }
 
-        [JsonProperty("status")]
-        public JsonJiraStatus Status { get; set; }
+    [JsonPropertyName("status")]
+    public JsonJiraStatus Status { get; set; }
 
-        [JsonProperty("issuetype")]
-        public JsonJiraIssueType IssueType { get; set; }
+    [JsonPropertyName("issuetype")]
+    public JsonJiraIssueType IssueType { get; set; }
 
-        [JsonProperty("priority")]
-        public JsonJiraPriority Priority { get; set; }
+    [JsonPropertyName("priority")]
+    public JsonJiraPriority Priority { get; set; }
 
-        [JsonProperty("fixVersions")]
-        public List<JsonJiraFixVersion> FixVersions { get; set; }
+    [JsonPropertyName("fixVersions")]
+    public List<JsonJiraFixVersion> FixVersions { get; set; }
 
-        [JsonProperty("components")]
-        public List<JsonJiraComponent> Components { get; set; }
+    [JsonPropertyName("components")]
+    public List<JsonJiraComponent> Components { get; set; }
 
-        [JsonProperty("timetracking")]
-        public JsonJiraTimeTracking TimeTracking { get; set; }
+    [JsonPropertyName("timetracking")]
+    public JsonJiraTimeTracking TimeTracking { get; set; }
 
-        [JsonProperty("customfield_10007")]
-        public string EpicLink { get; set; }
+    [JsonPropertyName("customfield_10007")]
+    public string EpicLink { get; set; }
 
-        [JsonProperty("customfield_10006")]
-        public JsonJiraSprint[] Sprint { get; set; }
+    [JsonPropertyName("customfield_10006")]
+    public JsonJiraSprint[] Sprint { get; set; }
 
-        [JsonProperty("customfield_12826")]
-        public JsonJiraFieldValue Magnitude { get; set; }
+    [JsonPropertyName("customfield_12826")]
+    public JsonJiraFieldValue Magnitude { get; set; }
 
-        [JsonProperty("customfield_12825")]
-        public JsonJiraFieldValue Severity { get; set; }
+    [JsonPropertyName("customfield_12825")]
+    public JsonJiraFieldValue Severity { get; set; }
 
-        [JsonProperty("customfield_12827")]
-        public JsonJiraFieldValue Complexity { get; set; }
-    }
+    [JsonPropertyName("customfield_12827")]
+    public JsonJiraFieldValue Complexity { get; set; }
+}
 
-    [JsonObject(MemberSerialization.OptIn)]
-    public class JsonJiraSprint
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
+public class JsonJiraSprint
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; }
 
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
+}
 
-    [JsonObject(MemberSerialization.OptIn)]
-    public class JsonJiraComponent
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
+public class JsonJiraComponent
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; }
 
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
+}
 
-    [JsonObject(MemberSerialization.OptIn)]
-    public class JsonJiraIssueType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
+public class JsonJiraIssueType
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; }
 
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
+}
 
-    [JsonObject(MemberSerialization.OptIn)]
-    public class JsonJiraPriority
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
+public class JsonJiraPriority
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; }
 
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
+}
 
-    [JsonObject(MemberSerialization.OptIn)]
-    public class JsonJiraFieldValue
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
+public class JsonJiraFieldValue
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; }
 
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
+    [JsonPropertyName("value")]
+    public string Value { get; set; }
 }

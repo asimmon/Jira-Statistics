@@ -1,8 +1,7 @@
 ﻿using ReactiveUI;
 
-namespace JiraStatistics.GuiApp.ViewModels
+namespace JiraStatistics.GuiApp.ViewModels;
+
+public class ViewModelBase : ReactiveObject
 {
-    public class ViewModelBase : ReactiveObject
-    {
-    }
 }

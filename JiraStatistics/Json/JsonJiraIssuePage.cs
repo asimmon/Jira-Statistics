@@ -1,12 +1,9 @@
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace JiraStatistics.Json
+namespace JiraStatistics.Json;
+
+public class JsonJiraIssuePage : JsonPage<JsonJiraIssue>
 {
-    [JsonObject(MemberSerialization.OptIn)]
-    public class JsonJiraIssuePage : JsonPage<JsonJiraIssue>
-    {
-        [JsonProperty("issues")]
-        public override List<JsonJiraIssue> Values { get; set; }
-    }
+    [JsonPropertyName("issues")]
+    public override List<JsonJiraIssue> Values { get; set; }
 }

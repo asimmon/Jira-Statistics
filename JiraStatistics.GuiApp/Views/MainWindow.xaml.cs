@@ -2,31 +2,30 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace JiraStatistics.GuiApp.Views
+namespace JiraStatistics.GuiApp.Views;
+
+public class MainWindow : Window
 {
-    public class MainWindow : Window
+    private readonly TextBox _logsTextBox;
+
+    public MainWindow()
     {
-        private readonly TextBox _logsTextBox;
+        this.InitializeComponent();
 
-        public MainWindow()
+        this._logsTextBox = this.FindControl<TextBox>("LogsTextBox");
+        this._logsTextBox.PropertyChanged += this.TextBoxOnPropertyChanged;
+    }
+
+    private void TextBoxOnPropertyChanged(object sender, AvaloniaPropertyChangedEventArgs e)
+    {
+        if (TextBox.TextProperty.Equals(e.Property))
         {
-            this.InitializeComponent();
-
-            this._logsTextBox = this.FindControl<TextBox>("LogsTextBox");
-            this._logsTextBox.PropertyChanged += this.TextBoxOnPropertyChanged;
+            this._logsTextBox.CaretIndex = int.MaxValue;
         }
+    }
 
-        private void TextBoxOnPropertyChanged(object sender, AvaloniaPropertyChangedEventArgs e)
-        {
-            if (TextBox.TextProperty.Equals(e.Property))
-            {
-                this._logsTextBox.CaretIndex = int.MaxValue;
-            }
-        }
-
-        private void InitializeComponent()
-        {
-            AvaloniaXamlLoader.Load(this);
-        }
+    private void InitializeComponent()
+    {
+        AvaloniaXamlLoader.Load(this);
     }
 }

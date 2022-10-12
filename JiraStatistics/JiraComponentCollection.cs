@@ -1,35 +1,33 @@
 using System.Collections;
-using System.Collections.Generic;
 using JiraStatistics.Json;
 
-namespace JiraStatistics
+namespace JiraStatistics;
+
+public class JiraComponentCollection : IReadOnlyCollection<JiraComponent>
 {
-    public class JiraComponentCollection : IReadOnlyCollection<JiraComponent>
+    private readonly IDictionary<string, JiraComponent> _components;
+
+    public JiraComponentCollection()
     {
-        private readonly IDictionary<string, JiraComponent> _components;
+        this._components = new Dictionary<string, JiraComponent>();
+    }
 
-        public JiraComponentCollection()
-        {
-            this._components = new Dictionary<string, JiraComponent>();
-        }
+    public int Count => this._components.Count;
 
-        public int Count => this._components.Count;
+    public IEnumerator<JiraComponent> GetEnumerator()
+    {
+        return this._components.Values.GetEnumerator();
+    }
 
-        public IEnumerator<JiraComponent> GetEnumerator()
-        {
-            return this._components.Values.GetEnumerator();
-        }
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return this.GetEnumerator();
+    }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return this.GetEnumerator();
-        }
-
-        public JiraComponent GetOrAdd(JsonJiraComponent component)
-        {
-            return this._components.TryGetValue(component.Id, out var exisingComponent)
-                ? exisingComponent
-                : this._components[component.Id] = new JiraComponent(component);
-        }
+    public JiraComponent GetOrAdd(JsonJiraComponent component)
+    {
+        return this._components.TryGetValue(component.Id, out var exisingComponent)
+            ? exisingComponent
+            : this._components[component.Id] = new JiraComponent(component);
     }
 }

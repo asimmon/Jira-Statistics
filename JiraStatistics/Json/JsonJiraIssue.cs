@@ -1,17 +1,14 @@
-using System.Collections.Generic;
 using System.Diagnostics;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
-namespace JiraStatistics.Json
+namespace JiraStatistics.Json;
+
+[DebuggerDisplay("{Id} - {Key} - {Fields.FixVersions.Count}")]
+public class JsonJiraIssue : JsonBaseJiraIssue
 {
-    [DebuggerDisplay("{Id} - {Key} - {Fields.FixVersions.Count}")]
-    [JsonObject(MemberSerialization.OptIn)]
-    public class JsonJiraIssue : JsonBaseJiraIssue
-    {
-        [JsonProperty("fields")]
-        public JsonJiraIssueFields Fields { get; set; }
+    [JsonPropertyName("fields")]
+    public JsonJiraIssueFields Fields { get; set; }
 
-        [JsonIgnore]
-        public List<JsonJiraIssueChangelogEvent> Changelog { get; set; }
-    }
+    [JsonIgnore]
+    public List<JsonJiraIssueChangelogEvent> Changelog { get; set; }
 }

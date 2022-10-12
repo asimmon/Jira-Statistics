@@ -1,18 +1,17 @@
 using System.Globalization;
 using JiraStatistics.Json;
 
-namespace JiraStatistics
+namespace JiraStatistics;
+
+public class JiraIssueType
 {
-    public class JiraIssueType
+    public JiraIssueType(JsonJiraIssueType json)
     {
-        public JiraIssueType(JsonJiraIssueType json)
-        {
-            this.Id = int.Parse(json.Id, NumberStyles.Integer, CultureInfo.InvariantCulture);
-            this.Name = json.Name;
-        }
-
-        public int Id { get; set; }
-
-        public string Name { get; set; }
+        this.Id = int.Parse(json.Id, NumberStyles.Integer, CultureInfo.InvariantCulture);
+        this.Name = json.Name;
     }
+
+    public int Id { get; set; }
+
+    public string Name { get; set; }
 }

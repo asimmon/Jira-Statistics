@@ -1,10 +1,9 @@
-namespace JiraStatistics
+namespace JiraStatistics;
+
+public enum JiraStatusCategory
 {
-    public enum JiraStatusCategory
-    {
-        New = 0,
-        InProgress = 1,
-        Done = 2,
-        OnHold = 3
-    }
+    New = 0,
+    InProgress = 1,
+    Done = 2,
+    OnHold = 3
 }

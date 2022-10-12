@@ -1,12 +1,9 @@
-using System;
+namespace JiraStatistics.GuiApp;
 
-namespace JiraStatistics.GuiApp
+public class PersistedOptionsNotFoundException : OptionsSerializationException
 {
-    public class PersistedOptionsNotFoundException : OptionsSerializationException
+    public PersistedOptionsNotFoundException(Exception innerException)
+        : base(innerException)
     {
-        public PersistedOptionsNotFoundException(Exception innerException)
-            : base(innerException)
-        {
-        }
     }
 }

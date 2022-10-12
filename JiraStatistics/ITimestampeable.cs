@@ -1,9 +1,6 @@
-using System;
+namespace JiraStatistics;
 
-namespace JiraStatistics
+public interface ITimestampeable
 {
-    public interface ITimestampeable
-    {
-        DateTime Timestamp { get; set; }
-    }
+    DateTime Timestamp { get; set; }
 }
