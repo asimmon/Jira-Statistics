@@ -1,21 +1,15 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="JiraStatistics.GuiApp.Views.MainWindow"
+        xmlns:local="clr-namespace:JiraStatistics.GuiApp.ViewModels"
         Icon="/Assets/jira.ico"
         Title="{Binding Title, Mode=OneWay}"
         MinWidth="800"
         MinHeight="600">
-    <Grid Margin="15">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="60" />
-            <RowDefinition Height="15" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="15" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="15" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
+    <Design.DataContext>
+        <local:MainWindowViewModel />
+    </Design.DataContext>
+    <Grid Margin="15" RowDefinitions="60,15,Auto,15,Auto,15,*">
         <TextBox
             Grid.Row="0"
             Text="{Binding JqlQuery, Mode=TwoWay}"
@@ -23,34 +17,18 @@
             TextWrapping="Wrap"
             AcceptsReturn="True"
             IsEnabled="{Binding !IsExporting, Mode=OneWay}" />
-        
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="15" />
-                <ColumnDefinition Width="150" />
-            </Grid.ColumnDefinitions>
 
+        <Grid Grid.Row="2" ColumnDefinitions="*,15,150">
             <TextBox
                 Grid.Column="0"
                 Text="{Binding OutputDirectoryPath, Mode=TwoWay}"
                 Watermark="Output directory"
                 IsEnabled="{Binding !IsExporting, Mode=OneWay}" />
 
-            <Button Grid.Column="3" Content="Select directory" Command="{Binding SelectDirectoryCommand, Mode=OneTime}" />
+            <Button Grid.Column="2" Content="Select directory" Command="{Binding SelectDirectoryCommand, Mode=OneTime}" />
         </Grid>
 
-        <Grid Grid.Row="4">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="15" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="15" />
-                <ColumnDefinition Width="185" />
-                <ColumnDefinition Width="15" />
-                <ColumnDefinition Width="150" />
-            </Grid.ColumnDefinitions>
-
+        <Grid Grid.Row="4" ColumnDefinitions="*,15,*,15,185,15,150">
             <TextBox Grid.Column="0" Text="{Binding JiraUsername, Mode=TwoWay}" Watermark="Jira email address" IsEnabled="{Binding !IsExporting, Mode=OneWay}" />
 
             <TextBox Grid.Column="2" Text="{Binding JiraAccessToken, Mode=TwoWay}" Watermark="Jira access token" IsEnabled="{Binding !IsExporting, Mode=OneWay}" PasswordChar="*" />
