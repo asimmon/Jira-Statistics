@@ -29,6 +29,7 @@ public class JiraStatus
             "open" => JiraStatusCategory.New,
             "todo" => JiraStatusCategory.New,
             "to do" => JiraStatusCategory.New,
+            "backlog" => JiraStatusCategory.New,
             "approved" => JiraStatusCategory.New,
             "ready to transfer" => JiraStatusCategory.New,
 
