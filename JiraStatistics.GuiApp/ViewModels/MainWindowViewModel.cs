@@ -41,6 +41,11 @@ public class MainWindowViewModel : ViewModelBase
         _ = this.LoadOptionsAsync();
     }
 
+    internal MainWindowViewModel()
+    {
+        // Used by design data context
+    }
+
     public string Title
     {
         get => this._title;
